@@ -1,0 +1,680 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width:100%;
+  background:url(ressources/backgroundjpg.jpg) repeat-y;
+  background-size: 100%;
+}
+header{
+  margin: 0;
+  padding: 0;
+  width:100%;
+}
+.box-login{
+  position: absolute;
+}
+/*footers*/
+.footerDesktop{
+  width:100%;
+  display: flex;
+  background-color: #000000;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  bottom: 0px;
+}
+.footerDesktop h2{
+  text-align: center;
+  font-size: 2em;
+  color: rgb(255, 243, 228);
+  font-family: 'paprika', Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 5px;
+}
+.footerMobil {
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  border: 4px solid rgb(6, 92, 92) ;
+  border-radius: 2px;
+  display: none;
+  position: fixed;
+  bottom: 0px; 
+  z-index: 1000;
+}
+.footerMobil  a{
+  text-align: center;
+  font-size: 3em;
+  font-family: 'Spicy Rice', Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 3px;
+  text-decoration: none;
+  color: #000000;
+  }
+
+.footerL {
+  width: 50%;
+  border-right:2px solid rgb(6, 92, 92); 
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #039eb3;
+}
+.footerR {
+  width: 50%;
+  border-left:2px solid rgb(6, 92, 92); 
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#78328b;
+}
+
+/*div logo et titre*/
+.logo_title {
+  position: relative;
+  padding: 10px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  z-index: 1000;  
+ }
+ .logo{
+  width: 100px;
+  margin-right: 30px; 
+  vertical-align: middle; 
+  z-index: 1000;  
+  border: 3px solid rgb(6, 92, 92);
+ }
+ .logo:hover{
+  border-color: rgb(4, 63, 63);
+}
+.titre{
+  font-family: 'Spicy Rice', Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 3px;
+  font-size: 40px;
+  text-align: center;
+  z-index: 1000;  
+}
+
+nav{
+  width: 100%;
+  
+}
+.menu{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative; 
+}
+
+/*div barre de recherche*/
+.recherche_FL{
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+.recherche_FL input[type="text"] {
+  width: 450px;
+  padding: 10px;
+  font-size: 20px;
+  border: 3px solid rgb(6, 92, 92);
+  border-radius: 10px;
+  z-index: 1500;
+  font-family:Arial,Verdana, Geneva, Tahoma, sans-serif;
+  z-index: 1000;
+}
+.rechercher{
+  width: 160px;
+  padding: 10px;
+  font-size: 20px;
+  color: rgb(80, 79, 79);
+  margin-left: 20px;
+  border: 3px solid rgb(6, 92, 92);
+  border-radius: 10px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  z-index: 1000;
+}
+.rechercher:hover{
+  color:#141414;
+  border-color:  rgb(4, 63, 63);
+}
+.btn_compte {
+  position: absolute;
+  margin-top: -80px;
+  right: 20px;
+  padding: 5px 20px 8px 20px;
+  font-size: 20px;
+  border: 3px solid rgb(6, 92, 92);
+  border-radius: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 255, 255);
+  background-color: #2895ed;
+  z-index: 1200;
+}
+.btn_compte:hover{
+  color:rgb(4, 63, 63);
+  border-color:  rgb(4, 63, 63);
+}
+#compte {
+  margin-top: -20px;
+  display: none;
+  position: absolute;
+  right: 20px; 
+  list-style: none; 
+  z-index: 1200;
+}
+#compte li { 
+  font-family: 'Spicy Rice', Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 1px;
+  color: #000000;
+  font-size: 25px; 
+  margin-bottom: 5px; 
+  padding: 5px 10px; 
+  background-color:rgb(232, 230, 230); 
+  border: 2px solid rgb(6, 92, 92);
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+#compte a { 
+  text-decoration: none;
+}
+#compte li:hover {
+ color:rgb(6, 92, 92);
+
+}
+/*div bouton fruit et légume*/
+.formFL{
+  z-index: 1000;
+}
+.formSearch{
+  z-index: 1000;
+}
+.flecheG,.flecheD{
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  height:150px;
+  opacity: 0.8;
+  z-index: 1000;
+}
+.flecheG{
+  margin-right: 1200px;
+  background:url(ressources/flecheG1.png) ;
+  background-size: 100%;
+  }
+  .flecheG:hover,.flecheD:hover{
+    opacity: 1;
+  }
+  .flecheD{
+  margin-left: 1200px;
+  background:url(ressources/flecheD1.png) ;
+  background-size: 100%;
+  }
+
+.button_FL{
+  padding: 10px; 
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+}
+.button_FL select {
+  display: none;
+  width:100px;
+  font-size: 16px;
+  border-radius: 15px;
+  font-size: 28px;
+  font-family: 'Spicy Rice', Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 5px;
+  background-color: #753131;
+  border: 3px solid #ffffff;
+  text-shadow: 5px 2px 4px rgba(70, 70, 70, 0.8);
+  text-align: center;
+  z-index: 1000;
+  
+  }
+.button_FL option {
+    font-size: 20px;
+    letter-spacing: 5px;
+    /*background-color: #753131;*/
+    font-family: 'Spicy Rice', Verdana, Geneva, Tahoma, sans-serif;
+    
+  }
+#btnFLR{
+  width:200px;
+  border-radius: 15px;
+  font-size: 28px;
+  font-family: 'Spicy Rice', Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 5px;
+  color: black;
+  text-shadow: 5px 2px 4px rgba(70, 70, 70, 0.8);
+  text-decoration: none;
+  /*text-shadow: 5px 2px 4px #444;/*5px a droite et 2 px en bas*/
+  text-align: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+.button_F{
+  border: 3px solid rgb(255, 255, 255);
+  padding: 5px 10px;
+  background-color:#fe901a;  
+  z-index: 1000;
+}
+.button_F:hover{
+  border-color:#bd6c17;
+  color: #ffffff;
+}
+.button_L{
+  border: 3px solid rgb(255, 255, 255);
+  padding: 5px 10px;
+  background-color:#00a14e;
+  margin-left: 30px; 
+  z-index: 1000;
+}
+.button_L:hover{
+  border-color:#006330;
+  color: #ffffff;
+}
+
+/*div bouton recette*/
+.button_Recettes{
+  padding: 10px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+}
+.btn_Recettes{
+  border: 3px solid rgb(255, 255, 255);
+  background-color:#78328b;
+  padding: 5px 10px;
+  z-index: 1000; 
+}
+.btn_Recettes:hover{
+  border-color:#411b4b;
+  color: #ffffff;
+}
+/* div RoueSelect*/
+.RoueSelect {
+  position: relative;
+  width: 1025px;
+  height: 1025px;
+  margin: 0 auto; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 10px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  margin-top: -960px; 
+  z-index: 100;  
+  transition: transform 0.5s ease-in-out;
+}
+.RoueSelect button{
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  border-radius: 25px;
+  cursor: grab;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgb(255, 255, 255);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.8); 
+  z-index: 100;  
+}
+.RoueSelect button:hover{
+  border-color:rgb(6, 92, 92);
+}
+ .janvier {
+  transform: rotate(30deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#54cbdb, #4bbfd7);
+}
+.fevrier {
+  transform: rotate(60deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#44b6d5, #35a1cf);
+}
+.mars {
+  transform: rotate(90deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#2d97cc, #2388c8);
+}
+.avril {
+  transform: rotate(120deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#93d330, #83c02b);
+}
+.mai {
+  transform: rotate(150deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#7bb528, #669c21);
+}
+.juin {
+  transform: rotate(180deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#5d901e, #4e7d19);
+}
+.juillet {
+  transform: rotate(210deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#ffc003, #feb508);
+}
+.aout {
+  transform: rotate(240deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#feac0c, #fe9814);
+}
+.septembre{
+  transform: rotate(270deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#fc8d19, #fd801f);
+}
+.octobre{
+  transform: rotate(300deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#d0b64c, #ccab3b);
+}
+.novembre{
+  transform: rotate(330deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#caa532, #c4951b);
+}
+.decembre {
+  transform: rotate(0deg) translateX(0) translateY(-500px);
+  background-image: linear-gradient(to right,#c18d0f, #c18d0f);
+}
+.RoueSelect h2{
+  font-family: 'Marck Script', Georgia, 'Times New Roman', Times, sans-serif;
+  transform: rotate(180deg);
+  font-size: 35px;
+  letter-spacing: 2px;
+  color: #000000;
+}
+ .RoueSelect:hover .button {
+  cursor: grabbing;
+}   
+
+.container_carte {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  flex-direction: row;
+}
+.container_carte h3{
+  margin: 50px;
+  font-size: 40px;
+}
+.carte {
+  display: inline-block;
+  display: none;
+  width: 280px;
+  height: 360px;
+  background-color: transparent;
+  perspective: 1000px;
+  margin: 15px 15px;
+  padding: 5px;
+  opacity: 0; 
+  transition: opacity 0.1s ease-in-out; 
+  z-index: 5;
+  
+}
+.double-face {
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  height: 100%; 
+}
+.face, .arriere {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border: 5px solid rgb(53, 20, 2);
+  border-radius: 20px;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.face {
+  align-items: center;
+  background:url(ressources/face.jpg) repeat-y;
+  background-size: 100%;
+}
+.face img {
+  max-width: 100%; 
+  height: auto;
+  border-radius: 10px;
+  border: 5px solid rgb(53, 20, 2);
+}
+.face h2 {
+  margin: auto;
+  text-align: center;
+  max-width: 100%;
+  font-family: 'Marck Script',  Georgia, 'Times New Roman', Times,  sans-serif;
+  font-size: 35px;
+  font-weight: 200;
+  color:  rgb(53, 20, 2);
+  letter-spacing: 3px; 
+}
+.arriere {
+  justify-content: space-between;
+  font-weight: bold;
+  transform: rotateY(180deg);
+  /*background-color: rgb(175, 230, 252);*/
+  background:url(ressources/arriere.jpg) repeat-y;
+  background-size: 100%;
+}
+.arriere img{
+  max-width: 300px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border-bottom:2px solid rgb(6, 92, 92); 
+  border-left: 2px solid rgb(6, 92, 92);
+ } 
+ .carte_info{
+  margin:5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+ }
+ .info{
+  position: relative;
+  width: 100%;
+ }
+ .info h3{
+  margin:3px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color:  rgb(53, 20, 2);
+  text-decoration: underline;
+ }
+ .info h4{
+  font-size: 23px;
+  color:rgb(5, 56, 56); 
+ }
+ .info p{ 
+ font-size: 16px;
+ letter-spacing: 1px;
+ color:rgb(5, 56, 56); 
+ font-style: italic;
+ margin-left: 10px;
+ }
+.arriere a {
+  color:  rgb(53, 20, 2);
+  font-size: 35px;
+  text-decoration: underline;
+  text-align: center;
+}
+.arriere a:hover{
+  color: rgb(4, 63, 63);
+}
+/* Appliquer la classe .active à la carte */
+.active{
+  transform: rotateY(180deg);
+}
+@media screen and (max-width:768px){
+   .button_FL select, #btnFLR{
+    margin-top: 85px;
+     margin-left: 25px;
+     width: 180px;
+     font-size: 20px; 
+  
+  }
+  .button_FL select{
+    margin-left: 0px;
+  }
+  .flecheG, .flecheD{
+    margin-top: 80px;
+    width: 40px;
+    height: 40px;
+  }
+  .recherche_FL{
+    width: 100%;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1500;  
+  }
+  .recherche_FL input[type="text"]{
+    font-size: 15px;
+    width: 400px;
+    margin: 3px 3px 3px 20px;
+  }
+  .rechercher {
+    width: 110px;
+    font-size: 15px;
+    margin: 3px;
+ }
+ 
+ .btn_compte{
+  
+  margin-top: 3px;
+}
+#compte{
+  margin-top: 50px;
+}
+
+#btnFLR{
+  width:130px;
+  font-size: 20px;
+}
+.container_carte{
+  margin-top: 10px;
+  margin-bottom: 110px;
+ }
+.logo,.titre,.button_Recettes,.RoueSelect,.footerDesktop,.flecheG,.flecheD{
+    display: none;
+ }
+#mois{
+  display:block;
+}
+.footerMobil{
+  display:flex;
+  }
+}
+@media screen and (min-width:768px) and (max-width:1279px) {
+  .logo{
+    width: 80px;
+  }
+  .titre{
+    font-size: 30px;
+  }
+  .recherche_FL{
+    padding: 8px;
+  }
+  .recherche_FL input[type="text"] {
+    width: 350px;
+    font-size: 15px;
+  }
+  .rechercher{
+    width: 120px;
+    font-size: 15px;
+  
+  }
+  .btn_compte{
+    margin-top: -75px;
+  }
+  
+  .flecheG{
+    width: 120px;
+    height: 120px;
+    margin-right: 900px;
+  }
+  .flecheD{
+    margin-left: 900px;
+    width: 120px;
+    height: 120px;
+  }
+  #btnFLR{
+    width:150px;
+    font-size: 18px;
+  }
+  .button_FL{
+    padding: 8px;
+  }
+  .button_Recettes{
+    padding: 8px;
+  }
+  .RoueSelect{
+    width: 825px;
+    height: 825px;
+    margin-top: -770px; 
+ }
+ .RoueSelect button{
+    width: 150px;
+    height: 50px;
+ }
+ .RoueSelect h2{
+    font-size: 25px;
+ }
+ .janvier {
+  transform: rotate(30deg) translateX(0) translateY(-400px);
+}
+.fevrier {
+  transform: rotate(60deg) translateX(0) translateY(-400px);
+}
+.mars {
+  transform: rotate(90deg) translateX(0) translateY(-400px); 
+}
+.avril {
+  transform: rotate(120deg) translateX(0) translateY(-400px); 
+}
+.mai {
+  transform: rotate(150deg) translateX(0) translateY(-400px);
+}
+.juin {
+  transform: rotate(180deg) translateX(0) translateY(-400px);
+}
+.juillet {
+  transform: rotate(210deg) translateX(0) translateY(-400px);
+}
+.aout {
+  transform: rotate(240deg) translateX(0) translateY(-400px);
+}
+.septembre{
+  transform: rotate(270deg) translateX(0) translateY(-400px);
+}
+.octobre{
+  transform: rotate(300deg) translateX(0) translateY(-400px);
+}
+.novembre{
+  transform: rotate(330deg) translateX(0) translateY(-400px);
+}
+.decembre {
+  transform: rotate(0deg) translateX(0) translateY(-400px);
+}
+.footerDesktop{
+  height: 70px;
+}
+}
+@media screen and (min-width:1280px) {
+  body{
+    width: 100%;
+  }
+}
+/*@media screen and (orientation: landscape){}*/

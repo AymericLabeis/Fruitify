@@ -1,0 +1,88 @@
+<!DOCTYPE html >
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="fruits et légumes de saison">
+    <title>MFLS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Paprika&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style_cards.css">
+    
+</head>
+<body>
+  <header>
+    <div class="logo_title">
+      <a  href="index.html" id="InitialMonth"><img class= "logo" src="ressources/logo2.png" alt="Image du logo"></a>
+      <h1 class="titre">Mes fruits et légumes de saison</h1>  
+  </header>
+  <div class="formCard">
+    <form action="#" method="post" enctype="multipart/form-data">
+        <label for="nom">Nom et type de la fiche:</label>
+        <input type="text" id="nom" name="libelle" value="<?php echo $libelle; ?>" autofocus="autofocus" required>
+        <select id="type" name="type">
+          <option value="fruit">fruit</option>
+          <option value="legume">Légume</option>
+        </select>
+
+        <label for="imageFL">Insérer l'image du fruit</label>
+        <input type="file" id="imageFL" name="imageFL" accept="image/*" onchange="previewImageFL(event)">
+        <img id="previewFL" class="preview-image" src="#" alt="">
+
+        <label for="imageD">Insérer l'image de disponibilité</label>
+        <input type="file" id="imageD" name="imageD" accept="image/*" onchange="previewImageDispo(event)">
+        <img id="previewDispo" class="preview-image" src="#" alt="">
+
+        <label for="mois">Mois disponible</label>
+        <select id="mois_ids" name="mois_ids[]" multiple>
+            <option value="01">Janvier</option>
+            <option value="02">Février</option>
+            <option value="03">Mars</option>
+            <option value="04">Avril</option>
+            <option value="05">Mai</option>
+            <option value="06">Juin</option>
+            <option value="07">Juillet</option>
+            <option value="08">Août</option>
+            <option value="09">Septembre</option>
+            <option value="10">Octobre</option>
+            <option value="11">Novembre</option>
+            <option value="12">Décembre</option>
+        </select>
+
+        <label for="prix">Prix</label>
+        <input type="number" id="prix" name="prix" value="<?php echo $prix; ?>" required>
+
+        <select id="kilo_piece" name="kilo_piece">
+          <option value="fruit">€/KG</option>
+          <option value="legume">€ la pièce</option>
+        </select>
+
+        <label for="vitamines">Vitamines:</label>
+        <input type="text" id="vitamines" name="vitamines" value="<?php echo $vitamines; ?>" required>
+
+        <label for="mineraux">Minéraux:</label>
+        <input type="text" id="mineraux" name="mineraux" value="<?php echo $mineraux; ?>" required>
+
+        <button id="submitRecette" type="submit">Créer la fiche</button>
+    </form>
+</div>
+
+
+
+
+    <?php if (!empty($success)) { ?>
+        <div class="success"><?php echo $success; ?></div>
+      <?php } ?>
+  <footer class="footerMobil">
+    <div class="footerL">
+      <a href="index.php">Accueil</a>
+    </div>
+    <div class="footerR">
+      <a href="Recettes.php">Recettes</a>
+    </div>
+    </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="appCards.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
+body {
+  margin: 0;
+  padding: 0;
+  width:100%;
+  background:url(ressources/backgroundjpg.jpg) repeat-y;
+  background-size: 100%;    
+}
+header{
+  margin: 0;
+  padding: 0;
+  width:100%;
+}
+.box-login{
+  position: absolute;
+}
+  /*footers*/
+.footerDesktop{
+  width:100%;
+  display: flex;
+  background-color: #000000;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  bottom: 0px;
+ }
+.footerDesktop h2{
+  text-align: center;
+  font-size: 2em;
+  color: rgb(255, 243, 228);
+  font-family: 'paprika', Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 5px;
+}
+.footerMobil {
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  border: 4px solid rgb(6, 92, 92) ;
+  border-radius: 2px;
+  display: none;
+  position: fixed;
+  bottom: 0px; 
+  z-index: 1000;
+}
+.footerMobil  a{
+  text-align: center;
+  font-size: 3em;
+  font-family: 'Spicy Rice', Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 3px;
+  text-decoration: none;
+  color: #000000;
+}
+.footerL {
+  width: 50%;
+  border-right:2px solid rgb(6, 92, 92); 
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #039eb3;
+ }
+.footerR {
+  width: 50%;
+  border-left:2px solid rgb(6, 92, 92); 
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#78328b;
+}
+  
+  /*div logo et titre*/
+.logo_title {
+  position: relative;
+  padding: 10px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  z-index: 1000;  
+}
+.logo{
+   width: 100px;
+  margin-right: 30px; 
+  vertical-align: middle; 
+  z-index: 1000;  
+  border: 3px solid rgb(6, 92, 92);
+}
+.logo:hover{
+  border-color: rgb(4, 63, 63);
+}
+.titre{
+  font-family: 'Spicy Rice', Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 3px;
+  font-size: 40px;
+  text-align: center;
+  z-index: 1000;  
+}
+.title_recette{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 40px;
+  margin: 20px 0;
+  text-align: center;
+}
+.errorR{
+  margin: 50px;
+  font-size: 40px;
+  text-align: center;
+}
+.mesDonnees{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin: 20px 50px;
+  background-color:rgba(255, 255, 255, 0.6);
+  padding: 10px; 
+  border: 2px solid white;
+}
+.mesDonnees h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
+  padding: 10px;
+  margin: 0;
+}
+.btn_upt {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.modifier {
+  width: 120px;
+  background-color: #0081d7;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.supprimer {
+  width: 120px;
+  background-color: #d84400;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  border: 2px solid rgb(0, 0, 0);
+  margin-left: 10px; /* Espace entre les boutons */
+}
+
+/* Style pour le bouton "Ajouter" */
+.ajouter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(17, 90, 60);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 25px;
+  margin: 30px auto;
+  border: 2px solid rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.modifier:hover, .supprimer:hover, .ajouter:hover {
+  color: aliceblue;
+  border-color: azure;
+  /* Ajoutez ici d'autres styles que vous souhaitez appliquer au survol */
+}
+
+a {
+  text-decoration: none;
+}
+@media screen and (max-width:768px){
+.logo_title{
+  display: none;
+} 
+.box-donnees{
+  margin-bottom: 110px;
+}
+.mesDonnees h2 {
+  font-size: 15px;
+}
+.modifier,.supprimer{
+  width: 90px;
+  font-size: 14px;
+}
+.ajouter{
+  font-size: 18px;
+}
+
+.footerMobil{
+  display:flex;
+  }
+
+}
+@media screen and (min-width:768px) and (max-width:1279px) {
+  .logo{
+    width: 80px;
+  }
+  .titre{
+    font-size: 30px;
+  }
+  .mesDonnées h2 {
+    font-size: 20px;
+  }
+  .modifier,.supprimer{
+    width: 100px;
+    font-size: 16px;
+  } 
+}

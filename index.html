@@ -1,0 +1,614 @@
+<!DOCTYPE html >
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="fruits et légumes de saison">
+    <title>MFLS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Paprika&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+  <header>
+    <div class="logo_title">
+      <a  href="index.html" id="InitialMonth"><img class= "logo" src="ressources/logo2.png" alt="Image du logo"></a>
+      <h1 class="titre">Mes fruits et légumes de saison</h1>
+     <!-- Bouton pour afficher/masquer la liste -->
+    <button class="btn_compte" onclick="afficherMasquerListe()">Compte</button>
+    
+    <!-- Liste ul initialement masquée -->
+    <button class="btn_compte" onclick="afficherMasquerListe()">≡</button>
+    <!-- Liste ul initialement masquée -->
+    <ul id="compte">
+    
+    if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+        // Si l'utilisateur est connecté en tant qu'administrateur, affichez toutes les options avec des liens
+        echo '<a href="mon_compte.php"><li>Mon compte</li></a>';
+        echo '<a href="mesRecettes.php"><li>Mes recettes</li></a>';
+        echo '<li>Mes fiches</li>';
+        echo '<a href="index.php?logout=true"><li>Déconnexion</li></a>';
+    } elseif (isset($_SESSION['pseudo'])) {
+        // Si l'utilisateur est connecté en tant qu'utilisateur non administrateur, affichez des options spécifiques
+        echo '<a href="mon_compte.php"><li>Mon compte</li></a>';
+        echo '<a href="mesRecettes.php"><li>Mes recettes</li></a>';
+        echo '<a href="index.php?logout=true"><li>Déconnexion</li></a>';
+    } else {
+        // Si l'utilisateur n'est pas connecté, affichez seulement l'option "Connexion"
+        echo '<a href="login2.php"><li id="compte-li-connexion">Connexion</li></a>';
+    }
+    
+</ul>
+    </div>
+  </header>
+  <nav>
+     <div class="menu">
+      <div class ="recherche_FL">
+        <form class="formSearch" method="get">
+          <input type="text" name="q" placeholder="Rechercher un fruit ou un légume" value="<?= $_GET['q'] ?? '' ?>">
+            <button name="r" type="submit" value="<?= $_GET['q'] ?? '' ?>">Rechercher</button>
+          </form>
+       </div> 
+      <div class ="button_FL">
+        <form class="button_FL">
+          <button type="submit"  class="flecheG" name="action1" value="month-1"onclick="rotateRoue(-30)"></button>
+         <select id="mois">
+          <option value="01">Janvier</option>
+          <option value="02">Février</option>
+          <option value="03">Mars</option>
+          <option value="04">Avril</option>
+          <option value="05">Mai</option>
+          <option value="06">Juin</option>
+          <option value="07">Juillet</option>
+          <option value="08">Août</option>
+          <option value="09">Septembre</option>
+          <option value="10">Octobre</option>
+          <option value="11">Novembre</option>
+          <option value="12">Décembre</option>
+         </select>
+        <button type="submit" id="btnFLR" class="button_F" value="Soumettre">Fruits</button>
+        <button type="submit" id="btnFLR" class="button_L" value="Soumettre">Légumes</button>
+        <button type="submit" class="flecheD" name="action1" value="month+1" onclick="rotateRoue(30)"></button>
+        
+      </form>
+       </div>
+       <div class ="button_Recettes">
+         <a href="Recettes.html" id="btnFLR" class="btn_Recettes" >Recettes</a>
+       </div> 
+       <div class="RoueSelect" >
+        <button class="buttonR janvier" id="bottomButton" value="01" draggable="true" ondragstart="dragStart(event)"><h2>Janvier</h2></button>
+        <button class="buttonR fevrier" id="bottomButton" value="02" draggable="true" ondragstart="dragStart(event)"><h2>Février</h2></button>
+        <button class="buttonR mars"  id="bottomButton" value="03" draggable="true" ondragstart="dragStart(event)"><h2>Mars</h2></button>
+        <button class="buttonR avril" id="bottomButton" value="04" draggable="true" ondragstart="dragStart(event)"><h2>Avril</h2></button>
+        <button class="buttonR mai" id="bottomButton" value="05" draggable="true" ondragstart="dragStart(event)"><h2>Mai</h2></button>
+        <button class="buttonR juin" id="bottomButton" value="06" draggable="true" ondragstart="dragStart(event)"><h2>Juin</h2></button>
+        <button class="buttonR juillet" id="bottomButton" value="07" draggable="true" ondragstart="dragStart(event)"><h2>Juillet</h2></button>
+        <button class="buttonR aout" id="bottomButton" value="08" draggable="true" ondragstart="dragStart(event)"><h2>Août</h2></button>
+        <button class="buttonR septembre" id="bottomButton" value="09" draggable="true" ondragstart="dragStart(event)"><h2>Septembre</h2></button>
+        <button class="buttonR octobre" id="bottomButton" value="10" draggable="true" ondragstart="dragStart(event)"><h2>Octobre</h2></button>
+        <button class="buttonR novembre" id="bottomButton" value="11" draggable="true" ondragstart="dragStart(event)"><h2>Novembre</h2></button>
+        <button class="buttonR decembre" id="bottomButton" value="12" draggable="true" ondragstart="dragStart(event)"><h2>Decembre</h2></button>
+      </div>
+    </div>
+   </nav>
+
+   
+  
+</div>
+   <div class="container_carte" >
+    <h2 class="moisSelectionne"></h2> 
+    <div class="carte">
+      <div class="double-face">
+          <div class="face">
+              <img src="ressources/FL/cerise.jpg">
+              <h2>Cerise</h2>
+          </div>
+          <div class="arriere">
+            <img src="ressources/Dispo/mjj.png">
+            <div class="carte_info">
+              <div class="info">
+                <h4> 3€/kilo</h4>
+              </div>
+              <div class="info">
+                <h3>Vitamines:</h3>
+                <p> A,B,C,D</p>
+              </div>
+              <div class="info">
+                <h3>Mineraux:</h3>
+                <p> magnésium, potass, mazzaohcjk, ydfydisuyf,
+                 
+                </p>
+              </div>
+            </div>
+            <a href="recettes.html">Idéé Recette</a>
+          </div>
+      </div>
+      </div>
+    <div class="carte">
+      <div class="double-face">
+          <div class="face">
+              <img src="ressources/FL/champignon de paris.jpg">
+              <h2>Champignon de Paris</h2>
+          </div>
+          <div class="arriere">
+            <img src="ressources/Dispo/mjj.jpg">
+            <div class="carte_info">
+              <div class="info">
+                <h3>Prix aux kilo:</h3>
+                <p> 3€</p>
+              </div>
+              <div class="info">
+                <h3>Vitamines:</h3>
+                <p> A,B,C,D</p>
+              </div>
+              <div class="info">
+                <h3>Mineraux:</h3>
+                <p> </p>
+              </div>
+            </div>
+            <a href="recettes.html">Idéé Recette</a>
+          </div>
+      </div>
+      </div>
+      <div class="carte">
+        <div class="double-face">
+            <div class="face">
+                <img src="ressources/FL/champignon de paris.jpg">
+                <h2>Cerise</h2>
+            </div>
+            <div class="arriere">
+              <img src="ressources/barremois.jpg">
+              <div class="carte_info">
+                <div class="info">
+                  <h3>Prix aux kilo:</h3>
+                  <p> 3€</p>
+                </div>
+                <div class="info">
+                  <h3>Vitamines:</h3>
+                  <p> A,B,C,D</p>
+                </div>
+                <div class="info">
+                  <h3>Mineraux:</h3>
+                  <p> magnésium, potass, mazzaohcjk, ydfydisuyf,
+                    tdsyuydtsu, ggtytrertr,fdgrgrtgtr, tretretretre, tretetre, fffezfre, refere, tretre, tretretretert, tgyyutyuty, ghyhdus,dsydysè_, tytytdysutdy,dgsydsy,dhsudhs,
+                    tgdysdysdsyd,dhsudhus,dsjuiod,dsqj
+                  </p>
+                </div>
+              </div>
+              <a href="recettes.html">Idéé Recette</a>
+            </div>
+        </div>
+        </div>
+      <div class="carte">
+        <div class="double-face">
+            <div class="face">
+                <img src="ressources/FL/champignon de paris.jpg">
+                <h2>Champignon de Paris</h2>
+            </div>
+            <div class="arriere">
+              <img src="ressources/barremois.jpg">
+              <div class="carte_info">
+                <div class="info">
+                  <h3>Prix aux kilo:</h3>
+                  <p> 3€</p>
+                </div>
+                <div class="info">
+                  <h3>Vitamines:</h3>
+                  <p> A,B,C,D</p>
+                </div>
+                <div class="info">
+                  <h3>Mineraux:</h3>
+                  <p> magnésium, potassium, mazzao</p>
+                </div>
+              </div>
+              <a href="recettes.html">Idéé Recette</a>
+            </div>
+        </div>
+        </div>
+        <div class="carte">
+          <div class="double-face">
+              <div class="face">
+                  <img src="ressources/FL/champignon de paris.jpg">
+                  <h2>Cerise</h2>
+              </div>
+              <div class="arriere">
+                <img src="ressources/barremois.jpg">
+                <div class="carte_info">
+                  <div class="info">
+                    <h3>Prix aux kilo:</h3>
+                    <p> 3€</p>
+                  </div>
+                  <div class="info">
+                    <h3>Vitamines:</h3>
+                    <p> A,B,C,D</p>
+                  </div>
+                  <div class="info">
+                    <h3>Mineraux:</h3>
+                    <p> magnésium, potass, mazzaohcjk, ydfydisuyf,
+                      tdsyuydtsu, ggtytrertr,fdgrgrtgtr, tretretretre, tretetre, fffezfre, refere, tretre, tretretretert, tgyyutyuty, ghyhdus,dsydysè_, tytytdysutdy,dgsydsy,dhsudhs,
+                      tgdysdysdsyd,dhsudhus,dsjuiod,dsqj
+                    </p>
+                  </div>
+                </div>
+                <a href="recettes.html">Idéé Recette</a>
+              </div>
+          </div>
+          </div>
+        <div class="carte">
+          <div class="double-face">
+              <div class="face">
+                  <img src="ressources/FL/champignon de paris.jpg">
+                  <h2>Champignon de Paris</h2>
+              </div>
+              <div class="arriere">
+                <img src="ressources/barremois.jpg">
+                <div class="carte_info">
+                  <div class="info">
+                    <h3>Prix aux kilo:</h3>
+                    <p> 3€</p>
+                  </div>
+                  <div class="info">
+                    <h3>Vitamines:</h3>
+                    <p> A,B,C,D</p>
+                  </div>
+                  <div class="info">
+                    <h3>Mineraux:</h3>
+                    <p> magnésium, potassium, mazzao</p>
+                  </div>
+                </div>
+                <a href="recettes.html">Idéé Recette</a>
+              </div>
+          </div>
+          </div>
+          <div class="carte">
+            <div class="double-face">
+                <div class="face">
+                    <img src="ressources/FL/champignon de paris.jpg">
+                    <h2>Cerise</h2>
+                </div>
+                <div class="arriere">
+                  <img src="ressources/barremois.jpg">
+                  <div class="carte_info">
+                    <div class="info">
+                      <h3>Prix aux kilo:</h3>
+                      <p> 3€</p>
+                    </div>
+                    <div class="info">
+                      <h3>Vitamines:</h3>
+                      <p> A,B,C,D</p>
+                    </div>
+                    <div class="info">
+                      <h3>Mineraux:</h3>
+                      <p> magnésium, potass, mazzaohcjk, ydfydisuyf,
+                        tdsyuydtsu, ggtytrertr,fdgrgrtgtr, tretretretre, tretetre, fffezfre, refere, tretre, tretretretert, tgyyutyuty, ghyhdus,dsydysè_, tytytdysutdy,dgsydsy,dhsudhs,
+                        tgdysdysdsyd,dhsudhus,dsjuiod,dsqj
+                      </p>
+                    </div>
+                  </div>
+                  <a href="recettes.html">Idéé Recette</a>
+                </div>
+            </div>
+            </div>
+          <div class="carte">
+            <div class="double-face">
+                <div class="face">
+                    <img src="ressources/FL/champignon de paris.jpg">
+                    <h2>Champignon de Paris</h2>
+                </div>
+                <div class="arriere">
+                  <img src="ressources/barremois.jpg">
+                  <div class="carte_info">
+                    <div class="info">
+                      <h3>Prix aux kilo:</h3>
+                      <p> 3€</p>
+                    </div>
+                    <div class="info">
+                      <h3>Vitamines:</h3>
+                      <p> A,B,C,D</p>
+                    </div>
+                    <div class="info">
+                      <h3>Mineraux:</h3>
+                      <p> magnésium, potassium, mazzao</p>
+                    </div>
+                  </div>
+                  <a href="recettes.html">Idéé Recette</a>
+                </div>
+            </div>
+            </div>
+            <div class="carte">
+              <div class="double-face">
+                  <div class="face">
+                      <img src="ressources/FL/champignon de paris.jpg">
+                      <h2>Cerise</h2>
+                  </div>
+                  <div class="arriere">
+                    <img src="ressources/barremois.jpg">
+                    <div class="carte_info">
+                      <div class="info">
+                        <h3>Prix aux kilo:</h3>
+                        <p> 3€</p>
+                      </div>
+                      <div class="info">
+                        <h3>Vitamines:</h3>
+                        <p> A,B,C,D</p>
+                      </div>
+                      <div class="info">
+                        <h3>Mineraux:</h3>
+                        <p> magnésium, potass, mazzaohcjk, ydfydisuyf,
+                          tdsyuydtsu, ggtytrertr,fdgrgrtgtr, tretretretre, tretetre, fffezfre, refere, tretre, tretretretert, tgyyutyuty, ghyhdus,dsydysè_, tytytdysutdy,dgsydsy,dhsudhs,
+                          tgdysdysdsyd,dhsudhus,dsjuiod,dsqj
+                        </p>
+                      </div>
+                    </div>
+                    <a href="recettes.html">Idéé Recette</a>
+                  </div>
+              </div>
+              </div>
+            <div class="carte">
+              <div class="double-face">
+                  <div class="face">
+                      <img src="ressources/FL/champignon de paris.jpg">
+                      <h2>Champignon de Paris</h2>
+                  </div>
+                  <div class="arriere">
+                    <img src="ressources/barremois.jpg">
+                    <div class="carte_info">
+                      <div class="info">
+                        <h3>Prix aux kilo:</h3>
+                        <p> 3€</p>
+                      </div>
+                      <div class="info">
+                        <h3>Vitamines:</h3>
+                        <p> A,B,C,D</p>
+                      </div>
+                      <div class="info">
+                        <h3>Mineraux:</h3>
+                        <p> magnésium, potassium, mazzao</p>
+                      </div>
+                    </div>
+                    <a href="recettes.html">Idéé Recette</a>
+                  </div>
+              </div>
+              </div>
+              <div class="carte">
+                <div class="double-face">
+                    <div class="face">
+                        <img src="ressources/FL/champignon de paris.jpg">
+                        <h2>Cerise</h2>
+                    </div>
+                    <div class="arriere">
+                      <img src="ressources/barremois.jpg">
+                      <div class="carte_info">
+                        <div class="info">
+                          <h3>Prix aux kilo:</h3>
+                          <p> 3€</p>
+                        </div>
+                        <div class="info">
+                          <h3>Vitamines:</h3>
+                          <p> A,B,C,D</p>
+                        </div>
+                        <div class="info">
+                          <h3>Mineraux:</h3>
+                          <p> magnésium, potass, mazzaohcjk, ydfydisuyf,
+                            tdsyuydtsu, ggtytrertr,fdgrgrtgtr, tretretretre, tretetre, fffezfre, refere, tretre, tretretretert, tgyyutyuty, ghyhdus,dsydysè_, tytytdysutdy,dgsydsy,dhsudhs,
+                            tgdysdysdsyd,dhsudhus,dsjuiod,dsqj
+                          </p>
+                        </div>
+                      </div>
+                      <a href="recettes.html">Idéé Recette</a>
+                    </div>
+                </div>
+                </div>
+              <div class="carte">
+                <div class="double-face">
+                    <div class="face">
+                        <img src="ressources/FL/champignon de paris.jpg">
+                        <h2>Champignon de Paris</h2>
+                    </div>
+                    <div class="arriere">
+                      <img src="ressources/barremois.jpg">
+                      <div class="carte_info">
+                        <div class="info">
+                          <h3>Prix aux kilo:</h3>
+                          <p> 3€</p>
+                        </div>
+                        <div class="info">
+                          <h3>Vitamines:</h3>
+                          <p> A,B,C,D</p>
+                        </div>
+                        <div class="info">
+                          <h3>Mineraux:</h3>
+                          <p> magnésium, potassium, mazzao</p>
+                        </div>
+                      </div>
+                      <a href="recettes.html">Idéé Recette</a>
+                    </div>
+                </div>
+                </div>
+                <div class="carte">
+                  <div class="double-face">
+                      <div class="face">
+                          <img src="ressources/FL/champignon de paris.jpg">
+                          <h2>Cerise</h2>
+                      </div>
+                      <div class="arriere">
+                        <img src="ressources/barremois.jpg">
+                        <div class="carte_info">
+                          <div class="info">
+                            <h3>Prix aux kilo:</h3>
+                            <p> 3€</p>
+                          </div>
+                          <div class="info">
+                            <h3>Vitamines:</h3>
+                            <p> A,B,C,D</p>
+                          </div>
+                          <div class="info">
+                            <h3>Mineraux:</h3>
+                            <p> magnésium, potass, mazzaohcjk, ydfydisuyf,
+                              tdsyuydtsu, ggtytrertr,fdgrgrtgtr, tretretretre, tretetre, fffezfre, refere, tretre, tretretretert, tgyyutyuty, ghyhdus,dsydysè_, tytytdysutdy,dgsydsy,dhsudhs,
+                              tgdysdysdsyd,dhsudhus,dsjuiod,dsqj
+                            </p>
+                          </div>
+                        </div>
+                        <a href="recettes.html">Idéé Recette</a>
+                      </div>
+                  </div>
+                  </div>
+                <div class="carte">
+                  <div class="double-face">
+                      <div class="face">
+                          <img src="ressources/FL/champignon de paris.jpg">
+                          <h2>Champignon de Paris</h2>
+                      </div>
+                      <div class="arriere">
+                        <img src="ressources/barremois.jpg">
+                        <div class="carte_info">
+                          <div class="info">
+                            <h3>Prix aux kilo:</h3>
+                            <p> 3€</p>
+                          </div>
+                          <div class="info">
+                            <h3>Vitamines:</h3>
+                            <p> A,B,C,D</p>
+                          </div>
+                          <div class="info">
+                            <h3>Mineraux:</h3>
+                            <p> magnésium, potassium, mazzao</p>
+                          </div>
+                        </div>
+                        <a href="recettes.html">Idéé Recette</a>
+                      </div>
+                  </div>
+                  </div>
+                  <div class="carte">
+                    <div class="double-face">
+                        <div class="face">
+                            <img src="ressources/FL/champignon de paris.jpg">
+                            <h2>Cerise</h2>
+                        </div>
+                        <div class="arriere">
+                          <img src="ressources/barremois.jpg">
+                          <div class="carte_info">
+                            <div class="info">
+                              <h3>Prix aux kilo:</h3>
+                              <p> 3€</p>
+                            </div>
+                            <div class="info">
+                              <h3>Vitamines:</h3>
+                              <p> A,B,C,D</p>
+                            </div>
+                            <div class="info">
+                              <h3>Mineraux:</h3>
+                              <p> magnésium, potass, mazzaohcjk, ydfydisuyf,
+                                tdsyuydtsu, ggtytrertr,fdgrgrtgtr, tretretretre, tretetre, fffezfre, refere, tretre, tretretretert, tgyyutyuty, ghyhdus,dsydysè_, tytytdysutdy,dgsydsy,dhsudhs,
+                                tgdysdysdsyd,dhsudhus,dsjuiod,dsqj
+                              </p>
+                            </div>
+                          </div>
+                          <a href="recettes.html">Idéé Recette</a>
+                        </div>
+                    </div>
+                    </div>
+                  <div class="carte">
+                    <div class="double-face">
+                        <div class="face">
+                            <img src="ressources/FL/champignon de paris.jpg">
+                            <h2>Champignon de Paris</h2>
+                        </div>
+                        <div class="arriere">
+                          <img src="ressources/barremois.jpg">
+                          <div class="carte_info">
+                            <div class="info">
+                              <h3>Prix aux kilo:</h3>
+                              <p> 3€</p>
+                            </div>
+                            <div class="info">
+                              <h3>Vitamines:</h3>
+                              <p> A,B,C,D</p>
+                            </div>
+                            <div class="info">
+                              <h3>Mineraux:</h3>
+                              <p> magnésium, potassium, mazzao</p>
+                            </div>
+                          </div>
+                          <a href="recettes.html">Idéé Recette</a>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="carte">
+                      <div class="double-face">
+                          <div class="face">
+                              <img src="ressources/FL/champignon de paris.jpg">
+                              <h2>Cerise</h2>
+                          </div>
+                          <div class="arriere">
+                            <img src="ressources/barremois.jpg">
+                            <div class="carte_info">
+                              <div class="info">
+                                <h3>Prix aux kilo:</h3>
+                                <p> 3€</p>
+                              </div>
+                              <div class="info">
+                                <h3>Vitamines:</h3>
+                                <p> A,B,C,D</p>
+                              </div>
+                              <div class="info">
+                                <h3>Mineraux:</h3>
+                                <p> magnésium, potass, mazzaohcjk, ydfydisuyf,
+                                  tdsyuydtsu, ggtytrertr,fdgrgrtgtr, tretretretre, tretetre, fffezfre, refere, tretre, tretretretert, tgyyutyuty, ghyhdus,dsydysè_, tytytdysutdy,dgsydsy,dhsudhs,
+                                  tgdysdysdsyd,dhsudhus,dsjuiod,dsqj
+                                </p>
+                              </div>
+                            </div>
+                            <a href="recettes.html">Idéé Recette</a>
+                          </div>
+                      </div>
+                      </div>
+                    <div class="carte">
+                      <div class="double-face">
+                          <div class="face">
+                              <img src="ressources/FL/champignon de paris.jpg">
+                              <h2>Champignon de Paris</h2>
+                          </div>
+                          <div class="arriere">
+                            <img src="ressources/barremois.jpg">
+                            <div class="carte_info">
+                              <div class="info">
+                                <h3>Prix aux kilo:</h3>
+                                <p> 3€</p>
+                              </div>
+                              <div class="info">
+                                <h3>Vitamines:</h3>
+                                <p> A,B,C,D</p>
+                              </div>
+                              <div class="info">
+                                <h3>Mineraux:</h3>
+                                <p> magnésium, potassium, mazzao</p>
+                              </div>
+                            </div>
+                            <a href="recettes.html">Idéé Recette</a>
+                          </div>
+                      </div>
+                      </div>
+                         
+
+  </div>
+</body>
+
+  <footer class="footerDesktop">
+    <h2>Aymeric LABEIS copyright 2023</h2>
+    </footer>
+<footer class="footerMobil">
+    <div class="footerL">
+      <a href="index.html">Accueil</a>
+    </div>
+    <div class="footerR">
+      <a href="Recettes.html">Recettes</a>
+    </div>
+</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
